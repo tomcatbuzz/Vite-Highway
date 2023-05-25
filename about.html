@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/style.scss" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About</title>
+  </head>
+  <body>
+    <header>
+      <ul class="nav">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </header>
+    <div id="container"></div>
+  
+    <main data-router-wrapper>
+      <article data-router-view="about">
+        <h1>About page</h1>
+      </article>
+    </main>
+    <footer><p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Your Name All Rights Reserved</p></footer>
+    <svg class="cursor cursor--large" width="60" height="60" viewBox="0 0 60 60">
+			<circle class="cursor__inner" cx="30" cy="30" r="20" />
+		</svg>
+		<svg class="cursor cursor--small" width="60" height="60" viewBox="0 0 60 60">
+			<circle class="cursor__inner" cx="30" cy="30" r="5" />
+		</svg>
+		<svg class="cursor cursor--close" width="40" height="40" viewBox="0 0 512 512">
+			<line x1="368" y1="368" x2="144" y2="144" />
+			<line x1="368" y1="144" x2="144" y2="368" />
+		</svg>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
