@@ -32,7 +32,7 @@ export default class Fade extends Highway.Transition {
     // Cursors.init()
     let goto = to.getAttribute('data-router-view');
     sketch.goto(goto);
-    const split = new SplitText('h1', {type:'chars'});
+    const split = new SplitText('#tagLine', {type:'chars'});
 	  animation.from(split.chars, {opacity:0, y:50, ease:'back(4)', stagger:{
 		from:'end',
 		each:0.05

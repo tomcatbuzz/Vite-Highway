@@ -32,7 +32,7 @@ body {
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-h1 {
+#tagLine {
   text-align: center;
   overflow: hidden;
   position: absolute;
@@ -73,24 +73,32 @@ h1 {
   word-spacing: 1.245rem;
 } */
 
-.nav {
-  padding: 50px;
-  position: absolute;
-  top: 0;
-  left: 0;
+.nav-header {
+  min-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  background: #fff;
+  margin: 0 auto;
+  padding: 2rem 0rem;
+  z-index: 2;
+  position: relative;
+  background: #222222;
 }
 
-.nav a {
-  font-size: 20px;
-  display: inline;
+.nav-header ul li {
+  display: inline-block;
+  font-size: 1.4em;
+  letter-spacing: 2px;
+  margin-right: 0.5rem;
+}
+
+.nav-header ul li a {
+  position: relative;
+  cursor: pointer;
   text-decoration: none;
-  color: black;
-}
-
-.nav li {
-    list-style-type: none;
+  margin-left: auto;
+  color: rgba(255, 255, 255, 0.87);
 }
 
 canvas {
@@ -127,18 +135,113 @@ footer {
   }
 }
 
+button#testScene {
+  text-align: center;
+  width: 100px;
+  height: 30px;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  transform: translate(-70%, -50%);
+}
+
+/* Hidden class for initial load of cursors */
+.hidden {
+  .cursor {
+    opacity: 0;
+  }
+}
+
+// .stop-scroll {
+//   body {
+//     overflow-x: hidden;
+//   }
+// }
+
+/* New Preloader styling */
+
+.splash__screen {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100%;
+z-index: 10;
+}
+
+.splash__screen.complete {
+pointer-events: none;
+}
+
+.left {
+position: absolute;
+left: 0;
+top: 0;
+width: 50%;
+height: 100%;
+background-color: #161616;
+border-right: 1px solid #161616;
+transition: transform 1s;
+}
+
+.left.active {
+transform: translateX(-100%);
+border-right: 1px solid #ffffff;
+}
+
+.right {
+position: absolute;
+left: 50%;
+top: 0;
+width: 50%;
+height: 100%;
+background-color: #161616;
+border-left: 1px solid #161616;
+transition: transform 1s;
+}
+
+.right.active {
+transform: translateX(100%);
+border-left: 1px solid #ffffff;
+}
+
+.progress__bar {
+position: absolute;
+bottom: 0;
+left: 50%;
+transform: translateX(-50%);
+width: 1px;
+height: 0%;
+background-color: white;
+
+transition: height 1s;
+}
+
+.progress__bar.complete {
+opacity: 0;
+}
+
+.percentage {
+position: absolute;
+padding-top: 100%;
+bottom: 0;
+left: 1rem;
+color: white;
+}
+
+
 /* Preloader styling  */
 .loader-wrapper {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 100;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: darkgray;
+  background-color: black;
 }
 
 #loader {

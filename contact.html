@@ -8,19 +8,24 @@
     <title>Contact</title>
   </head>
   <body>
-    <header>
+    <header class="nav-header">
       <ul class="nav">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="projects.html">Projects</a></li>
       </ul>
+      <div class="menu">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
     </header>
     <div id="container"></div>
   
     <main data-router-wrapper>
       <article data-router-view="contact">
-        <h1>Contact page</h1>
+        <h1 id="tagLine">Contact page</h1>
       </article>
     </main>
     <footer><p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Your Name All Rights Reserved</p></footer>
