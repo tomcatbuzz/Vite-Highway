@@ -38,8 +38,8 @@ H.on('NAVIGATE_IN', ({ to, location }) => {
   }
 });
 
-const loaderContainer = document.querySelector('.loader-wrapper');
-const cursors = document.querySelector('.cursor')
+// const loaderContainer = document.querySelector('.loader-wrapper');
+// const cursors = document.querySelector('.cursor')
 
 const splashScreen = document.querySelector('.splash__screen')
 const splashLeft = document.querySelector('.left');
@@ -48,20 +48,18 @@ const progressBar = document.querySelector('.progress__bar');
 const percentage = document.querySelector('.percentage');
 let loading = true;
 
-window.addEventListener('load', () => {
-  cursors.style.color = 'transparent'
-  // cursors.classList.add('hidden')
+window.addEventListener('load', () => { 
   setTimeout(() => {
     progressBar.style.height = '40%'
-  },2000);
+  }, 2000);
 
   setTimeout(() => {
     progressBar.style.height = '80%'
-  },4000);
+  }, 4000);
 
   setTimeout(() => {
     progressBar.style.height = '100%'
-  },5000);
+  }, 5000);
 
   setTimeout(() => {
     splashLeft.classList.add('active')
@@ -69,18 +67,11 @@ window.addEventListener('load', () => {
     progressBar.classList.add('complete')
     splashScreen.classList.add('complete')
     loading = false
-    // cursors.classList.remove('hidden')
-    cursors.style.color = ''
-  },6000);
+  }, 6000);
 
-  // cursors.classList.add('hidden')
-  // setTimeout(() => {
-  //   loaderContainer.classList.add('loader-finish')
-    
-  //   cursors.classList.remove('hidden')
-  //   // 
-  // }, 3000)
-  // console.log(setTimeout, "Time")
+  setTimeout(() => {
+    Cursors.init()
+  },4000)
 
   function percentageTracker() {
     if(loading) {
@@ -91,35 +82,85 @@ window.addEventListener('load', () => {
         percentage.style.transform = `translateY(calc(${top - window.innerHeight}px)`
         requestAnimationFrame(percentageTracker)
     }
-    // console.log(p, "height")
-    // console.log(percentage.innerHTML, "TEXT")
   }
   
   percentageTracker()
-})
 
-// function percentageTracker(){
-//   if(loading){
-//       const {height,top} = progressBar.getBoundingClientRect()
-//       const p = Math.ceil((height / window.innerHeight) * 100);
-//       percentage.textContent = `${p}%`;
-//       percentage.style.transform = `translateY(calc(${top - window.innerHeight}px)`;
-//       requestAnimationFrame(percentageTracker)
-//   }
-//   console.log(height, "height")
-//   console.log(percentage.textContent, "TEXT")
-// }
-
-// percentageTracker()
-
-const testScene = () => {
-  const div = document.createElement('canvas')
+  let path = document.querySelector(".path");
+function lerp(start, end, t){
+    return start * (1 - t) + end * t;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  Cursors.init()
-  console.log(Cursors, "when")
+let toggle = false;
+
+// Start SVG at bottom of screen
+let y = 100;
+let c = 100;
+
+
+function animate(){
+    if(toggle) {
+        y = lerp(y, 0, .055);
+        c = lerp(c, 0, 0.075);
+        path.setAttribute('d', `M 0 ${y} L 0 100 100 100 100 ${y} C ${50} ${c}, ${50} ${c}, 0 ${y}` )
+    } else {
+        y = lerp(y, 100, .055)
+        c = lerp(c, 100, 0.075);
+        path.setAttribute('d', `M 0 ${y} L 0 100 100 100 100 ${y} C 50 ${c}, ${50} ${c}, 0 ${y}` )
+    }
+    
+    requestAnimationFrame(animate)
+}
+
+animate()
+
+
+const menuToggle = document.querySelector('.menu-toggle');
+const div = document.querySelector('.wrapper')
+const ul = document.querySelector('.menu__ul');
+console.log(ul, "UL")
+menuToggle.addEventListener('click', () => {
+    setTimeout(() => {
+        toggle = !toggle;
+    }, 300)
+    if(toggle) {
+        ul.classList.remove('active');
+        div.classList.remove('no-scroll')
+
+    } else {
+        setTimeout(() => {
+            ul.classList.add('active')
+            div.classList.add('no-scroll')
+        }, 1000)
+    }
+    
+    menuToggle.classList.toggle('active')
 })
+})
+
+// document.addEventListener('click', testScene)
+// const el = document.getElementById('testScene')
+//   el.addEventListener('click', testScene())
+// const testScene = () => {
+//   const div = document.createElement('div')
+//   div.className = 'transition'
+//       div.style.position = 'fixed'
+//       div.style.top = 0
+//       div.style.width = '100%'
+//       div.style.height = '100%'
+//       div.style.backgroundColor = 'white'
+//       div.innerHTML = '<span class="rock">Rock On</span><ul><li><a href="index.html">Home</a></li><a href="about.html">About</a><li></li><a href="contact.html">Contact</a><li></li></ul>'
+//       div.style.zIndex = 100
+//       document.body.appendChild(div)
+// }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   setTimeout(() => {
+//     Cursors.init()
+//   },4000)
+  
+//   console.log(Cursors, "when")
+// })
 
 // document.querySelector('#app').innerHTML = `
 //   <div>

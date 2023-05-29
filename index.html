@@ -18,10 +18,9 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="projects.html">Projects</a></li>
       </ul>
-      <div class="menu">
-        <div class="line1"></div>
-        <div class="line2"></div>
-        <div class="line3"></div>
+      <div class="menu-toggle">
+        <span></span>
+        <span></span>
       </div>
     </header>
     <div id="container"></div>
@@ -46,10 +45,26 @@
       <div class="progress__bar"></div>
     </div>
 
+    <div class='wrapper'>   
+      <svg class="transition" viewBox="0 0 100 100" preserveAspectRatio="none">
+        <path class="path" fill='#fcc42a' dur="10s" vector-effect="non-scaling-stroke" 
+        d="M 0 100 L 100 100 100 100 0 100 C 0 0, 0 0, 0 100"/>
+          <animateMotion dur="10s" repeatCount="indefinite">
+            <mpath xlink:href="#path" />
+          </animateMotion>
+      </svg>
+      <ul class="menu__ul">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="projects.html">Projects</a></li>
+      </ul>
+    </div>
+
     <main data-router-wrapper>
       <article data-router-view="home">
         <button id="testScene">CLICK</button>
-        <h1 id="tagLine">Home page</h1>
+        <h1 id="tagLine">Tomcatbuzz</h1>
         <div class="slider__image--wrapper">
           <!-- <img class="slider__image slider__image--2" src=${testImage} alt="test image"> -->
           <img class="slider__image slider__image--2" src="./src/home.jpg" alt="test image">
