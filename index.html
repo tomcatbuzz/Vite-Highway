@@ -45,14 +45,18 @@
       <div class="progress__bar"></div>
     </div>
 
-    <div class='wrapper'>   
+    <div class="wrapper">   
       <svg class="transition" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <path class="path" fill='#fcc42a' dur="10s" vector-effect="non-scaling-stroke" 
+        <path class="path" fill="#fcc42a" dur="10s" vector-effect="non-scaling-stroke" 
         d="M 0 100 L 100 100 100 100 0 100 C 0 0, 0 0, 0 100"/>
           <animateMotion dur="10s" repeatCount="indefinite">
             <mpath xlink:href="#path" />
           </animateMotion>
       </svg>
+      <!-- <div class="close-toggle">
+        <span></span>
+        <span></span>
+      </div> -->
       <ul class="menu__ul">
         <li><a href="index.html">Home</a></li>
         <li><a href="about.html">About</a></li>
@@ -61,8 +65,9 @@
       </ul>
     </div>
 
-    <main data-router-wrapper>
-      <article data-router-view="home">
+    <main data-router-wrapper id="wrapper">
+      <div id="content">
+      <section data-router-view="home">
         <button id="testScene">CLICK</button>
         <h1 id="tagLine">Tomcatbuzz</h1>
         <div class="slider__image--wrapper">
@@ -73,9 +78,18 @@
         <div id="blue">
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae, voluptatum architecto, voluptatem ducimus deleniti nulla magnam repellat dignissimos ipsam ullam non nisi porro molestias veniam maiores est voluptas, similique quia quisquam atque maxime dolore quos tempora consectetur. Aliquid quam repellendus esse aspernatur, dignissimos numquam odio tenetur vero. Deleniti, necessitatibus consequuntur.</p>
         </div>
-      </article>
+      </section>
+      <section>
+        <h2>About Section</h2>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sed impedit iste iure consectetur? Maiores distinctio nihil vero minima animi eaque labore quam. Eaque tempore asperiores veritatis quas doloribus quos tenetur aliquid! Officiis tenetur sequi aspernatur, magnam asperiores ipsam aut, praesentium quaerat, saepe sed error minus natus nesciunt reprehenderit eveniet laboriosam!</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil accusantium doloribus provident laboriosam saepe, esse dicta suscipit reiciendis ab autem sint! Vero nostrum illum vel saepe accusantium quas explicabo modi molestiae! Eius repellat optio aut vel! Quas corrupti reiciendis amet, aliquid ea maxime porro accusantium delectus, eius quidem asperiores commodi!</p>
+        <div class="about-image">
+          <img src="./src/home.jpg" alt="">
+        </div>
+      </div>
+      </section>
     </main>
-    <footer><p>Copyright &copy; <script>document.write(new Date().getFullYear())</script> Your Name All Rights Reserved</p></footer>
+    <footer><p>&copy; <script>document.write(new Date().getFullYear())</script> Your Name All Rights Reserved</p></footer>
     <!-- <svg class="cursor cursor--large" width="60" height="60" viewBox="0 0 60 60">
 			<circle class="cursor__inner" cx="30" cy="30" r="20" />
 		</svg>

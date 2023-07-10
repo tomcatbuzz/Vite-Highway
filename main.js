@@ -5,7 +5,25 @@ import Highway from '@dogstudio/highway';
 
 import Cursors from "./src/js/Cursors";
 // import testImage from './src/home.jpg'
+import gsap from 'gsap'
+import { ScrollSmoother } from 'gsap/all';
+import { ScrollTrigger } from 'gsap/all';
+import { SplitText } from 'gsap/all';
 
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother, SplitText)
+
+ScrollTrigger.normalizeScroll(true)
+
+// create the smooth scroller FIRST!
+const smoother = ScrollSmoother.create({
+  wrapper: "#wrapper",
+  content: "#content",
+  smooth: 1,
+  normalizeScroll: true, // prevents address bar from showing/hiding on most devices, solves various other browser inconsistencies
+  ignoreMobileResize: true, // skips ScrollTrigger.refresh() on mobile resizes from address bar showing/hiding
+  effects: true,
+  preventDefault: true
+}); 
 
 import Fade from './fade';
 
@@ -115,27 +133,52 @@ function animate(){
 animate()
 
 
-const menuToggle = document.querySelector('.menu-toggle');
+const menuToggle = document.querySelector('.menu-toggle')
+// const closeToggle = document.querySelector('.menu__close')
 const div = document.querySelector('.wrapper')
-const ul = document.querySelector('.menu__ul');
+const ul = document.querySelector('.menu__ul')
+const menuClose = document.querySelector('.close-toggle')
+// const links = document.querySelectorAll('.menu__ul li a')
 console.log(ul, "UL")
 menuToggle.addEventListener('click', () => {
     setTimeout(() => {
         toggle = !toggle;
     }, 300)
     if(toggle) {
-        ul.classList.remove('active');
-        div.classList.remove('no-scroll')
+        ul.classList.remove('active')
+        div.classList.remove('active')
+        document.body.style.overflow = 'visible'
 
     } else {
         setTimeout(() => {
             ul.classList.add('active')
-            div.classList.add('no-scroll')
+            div.classList.add('active')
+            document.body.style.overflow = 'hidden'
         }, 1000)
     }
     
     menuToggle.classList.toggle('active')
+    // closeToggle.classList.toggle('active')
+    // links.classList.toggle('active')
 })
+
+  // const closeToggle = document.querySelector('.close-toggle')
+  // closeToggle.addEventListener('click', () => {
+  // setTimeout(() => {
+  //     close = !close;
+  // }, 300)
+  // if(close) {
+  //     ul.classList.remove('active')
+  //     div.classList.remove('active')
+  // } else {
+  //     setTimeout(() => {
+  //         ul.classList.add('active')
+  //         div.classList.add('active')
+  //     }, 1000)
+  // }
+  
+  // closeToggle.classList.close('active')
+  // })
 })
 
 // document.addEventListener('click', testScene)
